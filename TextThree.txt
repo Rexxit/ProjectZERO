@@ -1,0 +1,36 @@
+12a
+
+int readAndUncompress(char* file2)
+{
+	// Declaring the FILE variable pointer
+		FILE* fileP2;
+		char Uno;
+	//	int buffer[100];
+		int count=0;
+		size_t temp=1;
+
+		//Assigning fileP2 to the file and setting it to read only
+		fileP2 = fopen(file2, "r");
+
+		if (fileP2 == NULL)
+		{
+			printf("wunzip: file1 [file2 ...]\n");
+		 	exit(1);
+		} //end if()
+
+
+		while (temp > 0)
+		{
+			temp = fread(&count, 4, 1, fileP2);
+			//fread(&count, 4, 1, fileP2);
+			fread(&Uno, 1, 1, fileP2);
+
+			for (int i = 0; i < count; i++)
+			{
+				printf("%c", Uno);
+			}//end for()
+
+		}//end while()
+
+	return 0;
+}// function()
